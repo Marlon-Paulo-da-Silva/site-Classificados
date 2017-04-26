@@ -19,8 +19,8 @@ if(empty($_SESSION['cLogin'])){
 				<th>Foto</th>
 				<th>Titulo</th>
 				<th>Valor</th>
-				<th>Ações</th>
 				<th>Estado</th>
+				<th>Ações</th>
 			</tr>
 		</thead>
 		<?php require "classes/anuncios.class.php" ;
@@ -30,11 +30,21 @@ if(empty($_SESSION['cLogin'])){
 		foreach ($anuncios as $anuncio):
 			?>
 		<tr>
-			<td><img src="assets/images/anuncios/<?php echo $anuncio['url']; ?>" border="0"/></td>
+			<?php if(empty($anuncios['url'])): ?>
+				<td><a href=""><img src="assets/images/default.png" border="0" height="50"/></a></td>
+			<?php else: ?>
+				<td><a href=""><img src="assets/images/anuncios/<?php $anuncios['url']; ?> " border="0" height="50"/></a></td>
+			<?php endif; ?>
 			<td><?php echo $anuncio['titulo']; ?></td>
 			<td>R$ <?php echo number_format($anuncio['valor'], 2); ?></td>
-			<td></td>
-			<td></td>
+			<td>
+
+
+			</td>
+			<td>
+				<a href="editar-anuncio.php?id=<?php echo $anuncio['id']; ?>" class="btn btn-primary">Editar</a>
+				<a href="excluir-anuncio.php?id=<?php echo $anuncio['id']; ?>" class="btn btn-danger">Excluir</a>
+			</td>
 		</tr>
 		<?php
 		endforeach;

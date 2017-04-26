@@ -33,6 +33,38 @@ class Anuncios{
 
 
 	}
+
+	public function deleteAnuncio($id){
+		global $pdo;
+
+
+		$sql = $pdo->prepare("DELETE from anuncios_imagens where id_anuncio = :id_anuncio");
+		$sql->bindValue(":id_anuncio", $id);
+		$sql->execute();
+
+		$sql = $pdo->prepare("DELETE from anuncios where id = :id");
+		$sql->bindValue(":id", $id);
+		$sql->execute();
+
+	}
+
+	public function getAnuncio($id){
+		$array = array();
+		global $pdo;
+		
+
+		$sql = $pdo->prepare("SELECT * from anuncios where id = :id");
+		$sql->bindValue(":id", $id);
+		$sql->execute();
+
+		
+
+		if($sql->rowCount() > 0){
+			$array = $sql->fetch();
+		}
+
+		return $array;
+	}
 }
 
 ?>
