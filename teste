@@ -1,0 +1,44 @@
+class Anuncios{
+public function getMeusAnuncios(){
+global pdo;
+
+$array = array();
+$sql = pdo->prepare("SELECT 
+*,
+(select anuncios_imagens.url from anuncios_imagens where anuncios_imagens.id_anuncio = anuncios.id limit 1) as url 
+from anuncios 
+where id_usuario = :id_usuario");
+$sql->bindValue(":id_usuario", $_SESSION['cLogin']);
+$sql->execute();
+
+if($sql->rowCount() > 0)
+$array = $sql->fetchAll();
+
+return $array;
+}
+}
+
+
+
+
+foreach ($anuncios as $anuncio):
+?>
+<tr>
+<td><img src="assets/images/anuncios/<?php echo $anuncio['url']; ?>" border="0"/></td>
+<td><?php echo $anuncio['titulo']; ?></td>
+<td>R$ <?php echo number_format($anuncio['valor'], 2); ?></td>
+<td></td>
+<td></td>
+</tr>
+<?php
+endforeach;
+?>
+
+
+
+<?php require "classes/anuncios.class.php" 
+$anu = new Anuncios();
+$anuncios = $anu->getMeusAnuncios();
+
+
+?>
