@@ -11,7 +11,7 @@ if(empty($_SESSION['cLogin'])){
 <div class="container">
 	<h1>Meus Anuncios</h1>
 
-	<p><a href="add-Meus_anuncios.php" class="btn btn-default">Adicionar Anuncios</a></p>
+	<p><a href="add-meus_anuncios.php" class="btn btn-default">Adicionar Anuncios</a></p>
 
 	<table class="table table-striped">
 		<thead>
