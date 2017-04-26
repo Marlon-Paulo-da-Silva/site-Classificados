@@ -15,10 +15,19 @@ if(empty($_SESSION['cLogin']))
 	<form action="" method="Post" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="categoria">Categoria:</label>
-			<select name="categoria" id="categora" class="form-control">
-				<option value="0"></option>
-				<option value="1"></option>
-				<option value="2"></option>
+			<select name="categoria" id="categoria" class="form-control">
+				<?php
+				require 'classes/categorias.class.php';
+
+				$cat = new Categorias();
+				$categorias = $cat->getLista();
+
+				foreach ($categorias as $categoria):
+					?>
+				<option value="<?php echo $categoria['id'] ?>"><?php echo $categoria['nome'] ?></option>
+				<?php
+				endforeach;
+				?>
 			</select>
 		</div>
 		<div class="form-group">
