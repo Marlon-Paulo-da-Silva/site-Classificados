@@ -7,10 +7,34 @@ if(empty($_SESSION['cLogin']))
 	<?php
 	exit();
 }
+
+require 'classes/anuncios.class.php';
+
+$an = new Anuncios();
+
+if(isset($_POST['titulo']) && !empty($_POST['titulo'])){
+	$titulo = addslashes($_POST['titulo']);
+	$categoria = addslashes($_POST['categoria']);
+	$valor = addslashes($_POST['valor']);
+	$descricao = addslashes($_POST['descricao']);
+	$estado = addslashes($_POST['estado']);
+
+
+
+	$an->addAnuncio($titulo, $categoria, $valor, $descricao, $estado);
+	?>
+	<div class="alert alert-success container">
+		<strong>Parabéns, voce Anunciou com sucesso <p><h2>Boas vendas</h2></p></strong>
+		
+	</div>
+	<?php
+}
 ?>
 
 <div class="container">
 	<h1>Adicionar Anúncios</h1>
+
+	
 
 	<form action="" method="Post" enctype="multipart/form-data">
 		<div class="form-group">

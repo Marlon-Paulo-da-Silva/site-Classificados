@@ -10,8 +10,8 @@ class Usuarios{
 		if($sql->rowCount() == 0) {
 			$sql = $pdo->prepare("INSERT INTO usuarios set nome = :nome, email = :email, senha = :senha, telefone = :telefone");
 
-			$sql->bindValue(":nome", $nome);
 			$sql->bindValue(":email", $email);
+			$sql->bindValue(":nome", $nome);
 			$sql->bindValue(":senha", md5($senha));
 			$sql->bindValue(":telefone", $telefone);
 			$sql->execute();
