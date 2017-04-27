@@ -51,19 +51,31 @@ class Anuncios{
 	public function getAnuncio($id){
 		$array = array();
 		global $pdo;
-		
+
 
 		$sql = $pdo->prepare("SELECT * from anuncios where id = :id");
 		$sql->bindValue(":id", $id);
 		$sql->execute();
 
-		
+
 
 		if($sql->rowCount() > 0){
 			$array = $sql->fetch();
 		}
 
 		return $array;
+	}
+
+	public function editAnuncio($titulo, $categoria, $valor, $descricao, $estado, $id){
+		global $pdo;
+		$sql = $pdo->prepare("UPDATE anuncios set titulo = :titulo, id_categoria = :categoria, descricao = :descricao, valor = :valor, estado = :estado where anuncios.id = :id");
+		$sql->bindValue(":titulo", $titulo);
+		$sql->bindValue(":categoria",$categoria);
+		$sql->bindValue(":valor",$valor);
+		$sql->bindValue(":descricao",$descricao);
+		$sql->bindValue(":estado", $estado);
+		$sql->bindValue(":id",$id);
+		$sql->execute();
 	}
 }
 

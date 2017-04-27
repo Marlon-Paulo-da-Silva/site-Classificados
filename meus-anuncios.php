@@ -39,7 +39,20 @@ if(empty($_SESSION['cLogin'])){
 			<td>R$ <?php echo number_format($anuncio['valor'], 2); ?></td>
 			<td>
 
-
+				<?php switch ($anuncio['estado']) {
+					case '0':
+					echo "Ruim";
+					break;
+					case '1':
+					echo "Bom";
+					break;
+					case '2':
+					echo "Ótimo";
+					break;
+					default:
+					echo "Nunca usado";
+					break;
+				} ?>
 			</td>
 			<td>
 				<a href="editar-anuncio.php?id=<?php echo $anuncio['id']; ?>" class="btn btn-primary">Editar</a>

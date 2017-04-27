@@ -21,21 +21,21 @@ if(isset($_POST['titulo']) && !empty($_POST['titulo'])){
 
 
 
-	$an->addAnuncio($titulo, $categoria, $valor, $descricao, $estado);
+	$an->editAnuncio($titulo, $categoria, $valor, $descricao, $estado, $_GET['id']);
+
 	?>
 	<div class="alert alert-success container">
-		<strong>Parabéns, voce Anunciou com sucesso <p><h2>Boas vendas</h2></p></strong>
+		<strong>Editado com sucesso <p><h3>  Boas vendas!!!   </h3><a href="meus-anuncios.php" class="alert-link">Clique aqui para voltar aos seus Anuncios</a></p></strong>
 		
 	</div>
 	<?php
 }
-$a = new Anuncios();
+
 if (isset($_GET['id']) && !empty($_GET['id'])){
 	$id = $_GET['id'];
 
-	$infoAnun = $a->getAnuncio($id);
-	$array = array();
-	$array['nome']= "Marlon";
+	$infoAnun = $an->getAnuncio($id);
+
 
 } else{
 	?>
@@ -46,7 +46,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])){
 ?>
 
 <div class="container">
-	<h1 >Editar Anúncio - <?php echo $infoAnun['titulo']; ?></h1>
+	<h1>Editar Anúncio - <?php echo $infoAnun['titulo']; ?></h1>
 
 	<form action="" method="Post" enctype="multipart/form-data">
 		<div class="form-group">
