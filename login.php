@@ -15,10 +15,9 @@
 		if($usuarios->login($email, $senha)){
 			$id = $_SESSION['cLogin'];
 			if ($usuarios->usuarioLogado($id)) {
-				# code...
 
 				?>
-				
+
 				<script type="text/javascript">window.location.href="./";</script>
 				<?php
 			}

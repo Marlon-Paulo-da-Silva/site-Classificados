@@ -25,6 +25,7 @@ if(isset($_POST['titulo']) && !empty($_POST['titulo'])){
 	?>
 	<div class="alert alert-success container">
 		<strong>Parabéns, voce Anunciou com sucesso <p><h2>Boas vendas</h2></p></strong>
+		<br/></h3><a href="meus-anuncios.php" class="alert-link">Clique aqui para voltar aos seus Anuncios</a></p></strong>
 		
 	</div>
 	<?php
