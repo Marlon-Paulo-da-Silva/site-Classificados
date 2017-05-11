@@ -10,7 +10,23 @@ class Anuncios{
 
 		return $row['c'];
 	}
-	
+
+	public function getUltimosAnuncios(){
+		global $pdo;
+
+		$array = array();
+		$sql = $pdo->prepare("SELECT
+			*,
+			(select anuncios_imagens.url from anuncios_imagens where anuncios_imagens.id_anuncio = anuncios.id limit 1) as url,
+			(select categorias.nome from categorias where categorias.id = anuncios.id_categoria) as categoria
+			from anuncios order by id desc");
+		$sql->execute();
+
+		if($sql->rowCount() > 0)
+			$array = $sql->fetchAll();
+
+		return $array;
+	}
 
 
 	public function getMeusAnuncios(){
@@ -78,10 +94,8 @@ class Anuncios{
 
 					if($width/$height > $ratio){
 						$width = $height*$ratio;
-						echo "<br/>é maior do que proporçao <br/>";
 					}else{
 						$height = $width/$ratio;
-						echo " <br/>nao é maior do que proporçao<br/>";
 					}
 
 

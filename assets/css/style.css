@@ -10,3 +10,7 @@
 	width: 150px;
 	height: 150px;
 }
+.foto_redimensionada{
+	background-position: center;
+	background-size: cover;
+}

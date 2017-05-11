@@ -23,6 +23,7 @@ if(empty($_SESSION['cLogin'])){
 				<th>Ações</th>
 			</tr>
 		</thead>
+		
 		<?php require "classes/anuncios.class.php" ;
 		$anu = new Anuncios();
 		$anuncios = $anu->getMeusAnuncios();
@@ -34,7 +35,7 @@ if(empty($_SESSION['cLogin'])){
 			<?php if(empty($anuncio['url'])): ?>
 				<td><a href=""><img src="assets/images/default.png" border="0" width="50" height="50"/></a></td>
 			<?php else: ?>
-				<td><a href=""><img src="assets/images/anuncios/<?php echo $anuncio['url']; ?>" border="0" width="100" height="100"/></a></td>
+				<td><a href=""><img src="assets/images/anuncios/<?php echo $anuncio['url']; ?>" class="foto_redimensionada" border="0" width="100" height="100"/></a></td>
 			<?php endif; ?>
 			<td><?php echo $anuncio['titulo']; ?></td>
 			<td>R$ <?php echo number_format($anuncio['valor'], 2); ?></td>
