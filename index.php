@@ -31,7 +31,7 @@ $anuncios = $an->getUltimosAnuncios();
 						<tr>
 							<td>
 								<?php if(empty($anuncio['url'])): ?>
-									<img src="assets/images/default.png" border="0" width="50" height="50"/>
+									<img src="assets/images/default.png" border="0"  height="100"/>
 								<?php else: ?>
 									<img src="assets/images/anuncios/<?php echo $anuncio['url']; ?>" class="foto_redimensionada" border="0" width="100" height="100"/>
 								<?php endif; ?>
