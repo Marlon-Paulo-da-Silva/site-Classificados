@@ -11,15 +11,17 @@ class Anuncios{
 		return $row['c'];
 	}
 
-	public function getUltimosAnuncios(){
+	public function getUltimosAnuncios($page, $perPage){
 		global $pdo;
+
+		$offset = ($page - 1) * $perPage;
 
 		$array = array();
 		$sql = $pdo->prepare("SELECT
 			*,
 			(select anuncios_imagens.url from anuncios_imagens where anuncios_imagens.id_anuncio = anuncios.id limit 1) as url,
 			(select categorias.nome from categorias where categorias.id = anuncios.id_categoria) as categoria
-			from anuncios order by id desc");
+			from anuncios order by id desc limit $offset, $perPage");
 		$sql->execute();
 
 		if($sql->rowCount() > 0)

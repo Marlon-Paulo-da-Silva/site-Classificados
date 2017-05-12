@@ -8,7 +8,17 @@ $us = new Usuarios();
 $total_anuncio = $an->getTotalAnuncios();
 $total_empresas = $us->getTotalUsuarios();
 
-$anuncios = $an->getUltimosAnuncios();
+$pagina_atual = 1;
+
+if(isset($_GET['pagina_atual']) && !empty($_GET['pagina_atual'])){
+	$pagina_atual = addslashes($_GET['pagina_atual']);
+}
+
+$por_pagina = 2;
+
+$total_paginas = ceil($total_anuncio / $por_pagina);
+
+$anuncios = $an->getUltimosAnuncios($pagina_atual, $por_pagina);
 
 ?>
 
@@ -48,6 +58,11 @@ $anuncios = $an->getUltimosAnuncios();
 					<?php endforeach; ?>
 				</tbody>
 			</table>
+			<ul class="pagination">
+				<?php for ($q=0; $q < $total_paginas ; $q++):?>
+					<li class="<?php echo ($pagina_atual == ($q+1))?'active':'' ?>"><a href="index.php?pagina_atual=<?php echo ($q+1); ?>"><?php echo ($q+1); ?></a></li>
+				<?php endfor; ?>
+			</ul>
 		</div>
 	</div>
 </div>
