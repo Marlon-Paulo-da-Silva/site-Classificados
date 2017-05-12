@@ -128,7 +128,10 @@ class Anuncios{
 		global $pdo;
 
 
-		$sql = $pdo->prepare("SELECT * from anuncios where id = :id");
+		$sql = $pdo->prepare("SELECT *,
+			(select categorias.nome from categorias where categorias.id = anuncios.id_categoria) as categoria,
+			(select usuarios.telefone from usuarios where anuncios.id_usuario = usuarios.id) as telefone
+			from anuncios where id = :id");
 		$sql->bindValue(":id", $id);
 		$sql->execute();
 
@@ -137,7 +140,8 @@ class Anuncios{
 		if($sql->rowCount() > 0){
 			$array = $sql->fetch();
 			$array['fotos']= array();
-			$sql = $pdo->prepare("SELECT id,url from anuncios_imagens where id_anuncio = :id_anuncio");
+			$sql = $pdo->prepare("SELECT id,url
+				from anuncios_imagens where id_anuncio = :id_anuncio");
 			$sql->bindValue(":id_anuncio",$id);
 			$sql->execute();
 
