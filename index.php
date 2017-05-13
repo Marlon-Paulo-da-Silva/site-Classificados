@@ -71,7 +71,7 @@ $anuncios = $an->getUltimosAnuncios($pagina_atual, $item_por_pagina, $filtros);
 					<label for="estado">Estado de Conservação:</label>
 					<select name="filtros[estado]" id="estado" class="form-control">
 						<option></option>
-						<option value="0" <?php echo ($filtros['estado'] == "0")?'selected="selected"':''?>>Ruim</option>
+						<option value="4" <?php echo ($filtros['estado'] == "4")?'selected="selected"':''?>>Ruim</option>
 						<option value="1" <?php echo ($filtros['estado'] == "1")?'selected="selected"':''?>>Bom</option>
 						<option value="2" <?php echo ($filtros['estado'] == "2")?'selected="selected"':''?>>Otimo</option>
 						<option value="3" <?php echo ($filtros['estado'] == "3")?'selected="selected"':''?>>Nunca usado</option>

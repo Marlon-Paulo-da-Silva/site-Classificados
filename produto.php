@@ -42,6 +42,22 @@ $info = $an->getAnuncio($id);
 			<h1><?php echo $info['titulo']; ?></h1>
 			<h4><?php echo $info['categoria']; ?></h4>
 			<p><?php echo $info['descricao']; ?></p>
+			<p>
+				<?php switch ($info['estado']) {
+					case '4':
+					echo "Ruim";
+					break;
+					case '1':
+					echo "Bom";
+					break;
+					case '2':
+					echo "Ótimo";
+					break;
+					default:
+					echo "Nunca usado";
+					break;
+				} ?>
+			</p>
 			<br/>
 			<h3>R$ <?php echo number_format($info['valor'], 2); ?></h3>
 			<h4>Telefone:  <?php echo $info['telefone'];?></h4>

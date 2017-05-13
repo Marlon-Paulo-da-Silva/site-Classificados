@@ -42,7 +42,7 @@ if(empty($_SESSION['cLogin'])){
 			<td>
 
 				<?php switch ($anuncio['estado']) {
-					case '0':
+					case '4':
 					echo "Ruim";
 					break;
 					case '1':
