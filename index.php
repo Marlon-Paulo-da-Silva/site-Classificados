@@ -91,9 +91,9 @@ $anuncios = $an->getUltimosAnuncios($pagina_atual, $item_por_pagina, $filtros);
 						<tr>
 							<td>
 								<?php if(empty($anuncio['url'])): ?>
-									<img src="assets/images/default.png" border="0"  height="100"/>
+									<a href="produto.php?id=<?php echo $anuncio['id']; ?>"><img src="assets/images/default.png" border="0"  height="100"/></a>
 								<?php else: ?>
-									<img src="assets/images/anuncios/<?php echo $anuncio['url']; ?>" class="foto_redimensionada" border="0" width="100" height="100"/>
+									<a href="produto.php?id=<?php echo $anuncio['id']; ?>"><img src="assets/images/anuncios/<?php echo $anuncio['url']; ?>" class="foto_redimensionada" border="0" width="100" height="100"/></a>
 								<?php endif; ?>
 							</td>
 							<td>

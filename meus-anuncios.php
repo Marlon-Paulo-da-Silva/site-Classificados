@@ -37,7 +37,7 @@ if(empty($_SESSION['cLogin'])){
 			<?php else: ?>
 				<td><a href="produto.php?id=<?php echo $anuncio['id']; ?>"><img src="assets/images/anuncios/<?php echo $anuncio['url']; ?>" class="foto_redimensionada" border="0" width="100" height="100"/></a></td>
 			<?php endif; ?>
-			<td><?php echo $anuncio['titulo']; ?></td>
+			<td><a href="produto.php?id=<?php echo $anuncio['id']; ?>"><?php echo $anuncio['titulo']; ?></a></td>
 			<td>R$ <?php echo number_format($anuncio['valor'], 2); ?></td>
 			<td>
 
