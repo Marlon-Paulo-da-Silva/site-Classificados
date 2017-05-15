@@ -48,7 +48,7 @@ $anuncios = $an->getUltimosAnuncios($pagina_atual, $item_por_pagina, $filtros);
 			<h4>Pesquisa Avançada</h4>
 			<form method="GET">
 				<div class="form-group">
-					<label for="categoria">Categoria:</label>
+					<label for="categoria">Categoria:<?php echo $total_anuncio ?></label>
 					<select name="filtros[categoria]" id="categoria" class="form-control">
 						<option></option>
 						<?php foreach ($categorias as $cate):?>
