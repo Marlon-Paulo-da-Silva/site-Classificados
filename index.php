@@ -97,6 +97,10 @@ $anuncios = $an->getUltimosAnuncios($pagina_atual, $item_por_pagina, $filtros);
 								<?php endif; ?>
 							</td>
 							<td>
+								Nome do vendedor:<br />
+								<h4><?php echo  $anuncio['nomeDoVendedor'] ?></h4>
+							</td>
+							<td>
 								<a href="produto.php?id=<?php echo $anuncio['id']; ?>"><?php echo $anuncio['titulo']; ?></a><br />
 								<?php echo $anuncio['categoria'] ?>
 							</td>

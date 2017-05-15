@@ -59,7 +59,8 @@ class Anuncios{
 		$sql = $pdo->prepare("SELECT
 			*,
 			(select anuncios_imagens.url from anuncios_imagens where anuncios_imagens.id_anuncio = anuncios.id limit 1) as url,
-			(select categorias.nome from categorias where categorias.id = anuncios.id_categoria) as categoria
+			(select categorias.nome from categorias where categorias.id = anuncios.id_categoria) as categoria,
+			(select usuarios.nome from usuarios where anuncios.id_usuario = usuarios.id) as nomeDoVendedor
 			from anuncios where ".implode(' AND ', $filtroString)." order by id desc limit $offset, $perPage");
 		if(!empty($filtros['categoria'])){
 			$sql->bindValue(":id_categoria", $filtros['categoria']);
