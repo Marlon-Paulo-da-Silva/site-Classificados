@@ -78,7 +78,7 @@ $anuncios = $an->getUltimosAnuncios($pagina_atual, $item_por_pagina, $filtros);
 					</select>
 				</div>
 				<div class="form-group">
-					<button type="submit" class="btn btn-info">Pesquisar</button>
+					<button type="submit" class="btn btn-primary">Pesquisar</button>
 				</div>
 			</form>
 		</div>
@@ -97,11 +97,15 @@ $anuncios = $an->getUltimosAnuncios($pagina_atual, $item_por_pagina, $filtros);
 								<?php endif; ?>
 							</td>
 							<td>
-								<a href="produto.php?id=<?php echo $anuncio['id']; ?>"><?php echo $anuncio['titulo']; ?></a><br />
+								<h3><a href="produto.php?id=<?php echo $anuncio['id']; ?>"><?php echo $anuncio['titulo']; ?></a><br /></h3>
 								<?php echo $anuncio['categoria'] ?>
 							</td>
 							<td>
-								R$ <?php echo number_format($anuncio['valor'], 2); ?>
+								<h4><br /><?php echo  $anuncio['nomeDoVendedor'] ?></h4>
+								Vendedor
+							</td>
+							<td>
+								<h4><br />R$ <?php echo number_format($anuncio['valor'], 2); ?></h4>
 							</td>
 						</tr>
 
