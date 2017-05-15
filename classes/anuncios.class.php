@@ -6,7 +6,7 @@ class Anuncios{
 		global $pdo;
 
 		$filtroString = array('1=1');
-		if(!empty($filtros['categorias'])){
+		if(!empty($filtros['categoria'])){
 			$filtroString[] = 'anuncios.id_categoria = :id_categoria';
 		}
 		if(!empty($filtros['preco'])){
@@ -16,9 +16,9 @@ class Anuncios{
 			$filtroString[] = 'anuncios.estado = :estado';
 		}
 
-		$sql = $pdo->prepare("SELECT count(*) as c from anuncios where ".implode(" AND ", $filtroString));
+		$sql = $pdo->prepare("SELECT count(*) as c from anuncios where ".implode(' AND ', $filtroString));
 
-		if(!empty($filtros['categorias'])){
+		if(!empty($filtros['categoria'])){
 			$sql->bindValue(":id_categoria",$filtros['categoria']);
 		}
 		if(!empty($filtros['preco'])){
