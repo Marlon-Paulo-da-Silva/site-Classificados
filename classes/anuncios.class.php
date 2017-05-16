@@ -181,7 +181,8 @@ class Anuncios{
 
 		$sql = $pdo->prepare("SELECT *,
 			(select categorias.nome from categorias where categorias.id = anuncios.id_categoria) as categoria,
-			(select usuarios.telefone from usuarios where anuncios.id_usuario = usuarios.id) as telefone
+			(select usuarios.telefone from usuarios where anuncios.id_usuario = usuarios.id) as telefone,
+			(select usuarios.nome from usuarios where anuncios.id_usuario = usuarios.id) as nomeDoVendedor
 			from anuncios where id = :id");
 		$sql->bindValue(":id", $id);
 		$sql->execute();
