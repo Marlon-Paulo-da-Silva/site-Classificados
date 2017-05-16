@@ -23,7 +23,7 @@ $info = $an->getAnuncio($id);
 
 
 	<div class="row">
-		<div class="col-sm-5">
+		<div class="col-sm-4">
 
 			<div class="carousel slide" data-ride="carousel" id="meuCarousel">
 				<div class="carousel-inner" role="listbox">
@@ -39,7 +39,7 @@ $info = $an->getAnuncio($id);
 			</div>
 		</div>
 
-		<div class="col-sm-7">
+		<div class="col-sm-8">
 			<div class="page-header">
 				<h1 class="text-center"><?php echo $info['titulo']; ?></h1>
 			</div>
@@ -53,7 +53,7 @@ $info = $an->getAnuncio($id);
 				<div class="col-sm-6">
 					<div class="list-group">
 						<li class="list-group-item active">
-							<h4 class="list-group-item-heading">Descriao:</h4>
+							<h4 class="list-group-item-heading">Descrição:</h4>
 						</li>
 						<li class="list-group-item">
 							<h4 class="list-group-item-text"><?php echo $info['descricao']; ?></h4>
