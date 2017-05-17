@@ -113,12 +113,17 @@ $anuncios = $an->getUltimosAnuncios($pagina_atual, $item_por_pagina, $filtros);
 				</tbody>
 			</table>
 			<ul class="pagination">
+				<?php $endereco = $_SERVER ['REQUEST_URI']; ?>
+
 				<?php for ($q=0; $q < $total_paginas ; $q++):?>
-					<li class="<?php echo ($pagina_atual == ($q+1))?'active':'' ?>"><a href="index.php?pagina_atual=<?php echo ($q+1); ?>"><?php echo ($q+1); ?></a></li>
-				<?php endfor; ?>
-			</ul>
+
+					<li class="<?php echo ($pagina_atual == ($q+1))?'active':'' ?>">
+						<a href="<?php if(strlen($endereco) < 30):?>index.php?pagina_atual=<?php else: echo $endereco.'&pagina_atual='; endif; echo ($q+1); ?>"><?php echo ($q+1); ?></a></li>
+
+					<?php endfor; ?>
+				</ul>
+			</div>
 		</div>
 	</div>
-</div>
 
-<?php require "pages/footer.php"; ?>
+	<?php require "pages/footer.php"; ?>
