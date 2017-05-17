@@ -118,7 +118,7 @@ $anuncios = $an->getUltimosAnuncios($pagina_atual, $item_por_pagina, $filtros);
 				<?php for ($q=0; $q < $total_paginas ; $q++):?>
 
 					<li class="<?php echo ($pagina_atual == ($q+1))?'active':'' ?>">
-						<a href="<?php if(strlen($endereco) < 30):?>index.php?pagina_atual=<?php else: echo $endereco.'&pagina_atual='; endif; echo ($q+1); ?>"><?php echo ($q+1); ?></a></li>
+						<a href="<?php if(strlen($endereco) < 30):?>index.php?pagina_atual=<?php else: echo (strpos($endereco,'pagina_atual') === false)?$endereco.'&pagina_atual=':substr($endereco, 0, -1); endif; echo ($q+1); ?>"><?php echo ($q+1); ?></a></li>
 
 					<?php endfor; ?>
 				</ul>
